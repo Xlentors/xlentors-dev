@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xlentors — Roblox Systems Developer</title>
+<meta name="description" content="≈ Xlentors — independent Roblox Luau developer and web/SaaS builder.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Marcellus+SC&family=Marcellus&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div style="position:relative; min-height:100vh; background:#CAC4AE; font-family:'Hanken Grotesk',sans-serif; color:#454135;">
+
+  <div style="position:relative; z-index:10; max-width:1080px; margin:0 auto; padding:0 40px;">
+
+    <!-- ===== top system bar ===== -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:26px 0; border-bottom:1px solid #6F6B57;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-size:12px;">◆</span>
+        <span style="font-family:'Marcellus SC',serif; font-size:17px; letter-spacing:0.2em;">XLENTORS</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#6E6A56;">
+        <span style="width:6px; height:6px; background:#5C7A3E; display:inline-block; animation:nier-blink 1.8s infinite;"></span>
+        AVAILABLE FOR WORK
+      </div>
+    </div>
+
+    <!-- ===== HERO : menu rail + title ===== -->
+    <div style="display:grid; grid-template-columns:240px 1fr; gap:64px; padding:96px 0 104px; align-items:center;">
+      <!-- menu rail -->
+      <div style="display:flex; flex-direction:column; gap:2px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8A8470; padding:0 14px 16px;">PORTFOLIO</div>
+        <div data-menu data-selected="1" style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; background:#454135; color:#CAC4AE;"><span>HOME</span><span>◂</span></div>
+        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>WORK</span><span style="opacity:0;">◂</span></div>
+        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>CAPABILITIES</span><span style="opacity:0;">◂</span></div>
+        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>ABOUT</span><span style="opacity:0;">◂</span></div>
+        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>CONTACT</span><span style="opacity:0;">◂</span></div>
+      </div>
+
+      <!-- title -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#8C2E2E;">▌ ROBLOX · LUAU</div>
+        <h1 style="font-family:'Marcellus SC',serif; font-weight:400; font-size:78px; line-height:1.0; letter-spacing:0.02em; margin:24px 0 0;">Systems<br>Developer</h1>
+        <p style="font-size:16px; line-height:1.65; color:#5A5644; max-width:440px; margin:32px 0 0;">I'm Xlentors — an independent developer building the systems behind Roblox games and the web tools around them. Open for commissions.</p>
+        <div style="display:flex; gap:24px; margin-top:36px; align-items:center; flex-wrap:wrap;">
+          <span data-cta style="font-family:'Marcellus SC',serif; font-size:13px; letter-spacing:0.12em; background:#454135; color:#CAC4AE; padding:13px 26px; cursor:pointer;">▸ VIEW WORK</span>
+          <span data-link style="font-family:'Marcellus SC',serif; font-size:13px; letter-spacing:0.12em; cursor:pointer; border-bottom:1px solid #454135; padding-bottom:3px;">Contact</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SELECTED WORK ===== -->
+    <div style="display:flex; align-items:baseline; gap:16px; margin-top:88px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8C2E2E;">[ 002 ]</span>
+      <span style="font-family:'Marcellus SC',serif; font-size:21px; letter-spacing:0.1em;">SELECTED WORK</span>
+      <span style="flex:1; height:1px; background:#B4AE93;"></span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8A8470;">LIVE ROBLOX DATA</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:28px;">
+     {% for game in games %}
+<div data-card style="border:1px solid #6F6B57; background:rgba(69,65,53,0.02); cursor:pointer; transition:transform .2s ease, border-color .2s ease;">
+  <a href="{{ game.url }}" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; display:block;">
+    {% if game.thumbnail %}
+    <img src="{{ game.thumbnail }}" alt="{{ game.name }}" style="display:block; width:100%; height:188px; object-fit:cover; border-bottom:1px solid #6F6B57;">
+    {% endif %}
+    <div style="padding:22px;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8C2E2E;">{{ "%02d"|format(loop.index) }}</span>
+          <span style="font-family:'Marcellus SC',serif; font-size:24px; letter-spacing:0.04em;">{{ game.name }}</span>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#8A8470;">ROBLOX EXPERIENCE</span>
+      </div>
+      <p style="margin-top:12px; font-size:13px; line-height:1.5; color:#5A5644;">{{ game.description }}</p>
+      <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; color:#6E6A56;">
+        <span style="border:1px solid #B4AE93; padding:5px 9px;">{{ game.visits }} VISITS</span>
+        <span style="border:1px solid #B4AE93; padding:5px 9px;">CREATED {{ game.created[:4] }}</span>
+      </div>
+    </div>
+  </a>
+</div>
+{% else %}
+      <div style="grid-column:1 / -1; padding:22px; border:1px solid #6F6B57; color:#6E6A56; font-family:'JetBrains Mono',monospace; font-size:12px;">
+        No experience data available right now.
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- ===== CAPABILITIES : open cells ===== -->
+    <div style="display:flex; align-items:baseline; gap:16px; margin-top:88px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8C2E2E;">[ 003 ]</span>
+      <span style="font-family:'Marcellus SC',serif; font-size:21px; letter-spacing:0.1em;">CAPABILITIES</span>
+      <span style="flex:1; height:1px; background:#B4AE93;"></span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); column-gap:40px; margin-top:20px;">
+      <div style="padding:30px 0; border-top:1px solid #B4AE93; display:flex; gap:18px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8C2E2E; padding-top:6px;">/01</div>
+        <div><div style="font-family:'Marcellus SC',serif; font-size:20px; letter-spacing:0.04em;">Luau Scripting</div><div style="font-size:13px; line-height:1.6; color:#6E6A56; margin-top:8px;">Networking, OOP frameworks, anti-exploit, performance.</div></div>
+      </div>
+      <div style="padding:30px 0; border-top:1px solid #B4AE93; display:flex; gap:18px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8C2E2E; padding-top:6px;">/02</div>
+        <div><div style="font-family:'Marcellus SC',serif; font-size:20px; letter-spacing:0.04em;">Gameplay Systems</div><div style="font-size:13px; line-height:1.6; color:#6E6A56; margin-top:8px;">Combat, economies, progression, and live-ops loops.</div></div>
+      </div>
+      <div style="padding:30px 0; border-top:1px solid #B4AE93; display:flex; gap:18px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8C2E2E; padding-top:6px;">/03</div>
+        <div><div style="font-family:'Marcellus SC',serif; font-size:20px; letter-spacing:0.04em;">Web / SaaS</div><div style="font-size:13px; line-height:1.6; color:#6E6A56; margin-top:8px;">Flask, Next.js, Cloud Run — backends for the tools around the games.</div></div>
+      </div>
+    </div>
+
+    <!-- ===== CONTACT : single bracket frame ===== -->
+    <div style="position:relative; border:1px solid #6F6B57; margin:96px 0 48px; padding:72px 52px; text-align:center;">
+      <span style="position:absolute; top:-1px; left:-1px; width:14px; height:14px; border-top:1.5px solid #454135; border-left:1.5px solid #454135;"></span>
+      <span style="position:absolute; top:-1px; right:-1px; width:14px; height:14px; border-top:1.5px solid #454135; border-right:1.5px solid #454135;"></span>
+      <span style="position:absolute; bottom:-1px; left:-1px; width:14px; height:14px; border-bottom:1.5px solid #454135; border-left:1.5px solid #454135;"></span>
+      <span style="position:absolute; bottom:-1px; right:-1px; width:14px; height:14px; border-bottom:1.5px solid #454135; border-right:1.5px solid #454135;"></span>
+
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#8C2E2E;">▌ OPEN TRANSMISSION</div>
+      <h2 style="font-family:'Marcellus SC',serif; font-weight:400; font-size:54px; letter-spacing:0.03em; margin:20px 0 0;">Let's Build.</h2>
+      <p style="font-size:15px; line-height:1.65; color:#5A5644; max-width:420px; margin:18px auto 0;">Commissions and collaborations open. Send a brief and I'll reply within 48 hours.</p>
+      <div style="margin-top:36px; display:inline-flex;">
+        <a href="mailto:your-email@example.com" data-cta style="text-decoration:none; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.1em; background:#454135; color:#CAC4AE; padding:16px 36px; cursor:pointer; display:inline-block;">▸ your-email@example.com</a>
+      </div>
+      <div style="margin-top:28px; display:flex; gap:24px; justify-content:center; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em;">
+        <a data-link href="#" style="cursor:pointer; color:inherit; text-decoration:none;">DISCORD</a>
+        <a data-link href="https://www.roblox.com/users/0/profile" style="cursor:pointer; color:inherit; text-decoration:none;">ROBLOX PROFILE</a>
+        <a data-link href="https://github.com/" style="cursor:pointer; color:inherit; text-decoration:none;">GITHUB</a>
+      </div>
+    </div>
+
+    <!-- ===== footer ===== -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:24px 0 44px; border-top:1px solid #6F6B57; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#8A8470;">
+      <span>© 2026 XLENTORS — ROBLOX SYSTEMS DEVELOPER</span>
+      <span>VISITOR LOG: {{ "%04d"|format(visitor_count) }}</span>
+      <span style="animation:nier-blink 2.6s infinite;">AUTO-SAVE COMPLETE.</span>
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

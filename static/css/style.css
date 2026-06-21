@@ -1,0 +1,6 @@
+/* Fonts loaded via Google Fonts CDN (see <link> tags in index.html head) */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #CAC4AE; }
+@keyframes nier-blink { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
+::selection { background:#454135; color:#CAC4AE; }
