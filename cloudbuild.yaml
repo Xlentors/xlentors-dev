@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/xlentors-dev/cloud-run-source-deploy/xlentors-dev', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/xlentors-dev/cloud-run-source-deploy/xlentors-dev']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'xlentors-dev'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/xlentors-dev/cloud-run-source-deploy/xlentors-dev'
+      - '--region'
+      - 'us-central1'
+      - '--allow-unauthenticated'
+
+images:
+  - 'us-central1-docker.pkg.dev/xlentors-dev/cloud-run-source-deploy/xlentors-dev'
