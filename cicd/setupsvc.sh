@@ -471,9 +471,11 @@ cloud_run_service_url() {
 }
 
 domain_mapping_exists() {
-  gcloud beta run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
+  gcloud beta run domain-mappings list \
     --project="$GCLOUD_PROJECT_ID" \
-    --region="$GCLOUD_REGION" >/dev/null 2>&1
+    --region="$GCLOUD_REGION" \
+    --format='value(metadata.name)' 2>/dev/null \
+    | grep -Fx "$TARGET_SERVICE_DNS_NAME" >/dev/null 2>&1
 }
 
 ensure_domain_mapping() {
@@ -507,10 +509,11 @@ print_domain_mapping_dns() {
 
   say
   say "DNS records for ${TARGET_SERVICE_DNS_NAME} (set these in Porkbun):"
-  gcloud beta run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
+  gcloud beta run domain-mappings list \
     --project="$GCLOUD_PROJECT_ID" \
     --region="$GCLOUD_REGION" \
-    --format='table(resourceRecords.type,resourceRecords.name,resourceRecords.rrdata)'
+    --format='table(resourceRecords.type,resourceRecords.rrdata)' \
+    --filter="metadata.name=${TARGET_SERVICE_DNS_NAME}"
 }
 
 delete_domain_mapping_if_exists() {
@@ -877,9 +880,10 @@ run_chkdomain() {
     return 0
   fi
 
-  gcloud beta run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
+  gcloud beta run domain-mappings list \
     --project="$GCLOUD_PROJECT_ID" \
     --region="$GCLOUD_REGION" \
+    --filter="metadata.name=${TARGET_SERVICE_DNS_NAME}" \
     --format='yaml(metadata.name,status.conditions,status.mappedRouteName)'
 
   print_domain_mapping_dns
