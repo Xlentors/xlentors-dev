@@ -386,6 +386,7 @@ ensure_project_iam() {
   say "Ensuring IAM roles for deployment service account: $sa_email"
   for role in \
     roles/artifactregistry.writer \
+    roles/datastore.user \
     roles/logging.logWriter \
     roles/run.admin
   do
