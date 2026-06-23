@@ -471,7 +471,7 @@ cloud_run_service_url() {
 }
 
 domain_mapping_exists() {
-  gcloud run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
+  gcloud beta run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
     --project="$GCLOUD_PROJECT_ID" \
     --region="$GCLOUD_REGION" >/dev/null 2>&1
 }
@@ -483,11 +483,20 @@ ensure_domain_mapping() {
   fi
 
   say "Creating domain mapping: ${TARGET_SERVICE_DNS_NAME} -> ${TARGET_SERVICE_NAME}"
-  gcloud run domain-mappings create \
+  local output
+  if ! output="$(gcloud beta run domain-mappings create \
     --service="$TARGET_SERVICE_NAME" \
     --domain="$TARGET_SERVICE_DNS_NAME" \
     --project="$GCLOUD_PROJECT_ID" \
-    --region="$GCLOUD_REGION"
+    --region="$GCLOUD_REGION" 2>&1)"; then
+    if printf '%s' "$output" | grep -qi 'already exists'; then
+      say "Domain mapping already exists: ${TARGET_SERVICE_DNS_NAME}"
+      return 0
+    fi
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
+  printf '%s\n' "$output"
 }
 
 print_domain_mapping_dns() {
@@ -498,7 +507,7 @@ print_domain_mapping_dns() {
 
   say
   say "DNS records for ${TARGET_SERVICE_DNS_NAME} (set these in Porkbun):"
-  gcloud run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
+  gcloud beta run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
     --project="$GCLOUD_PROJECT_ID" \
     --region="$GCLOUD_REGION" \
     --format='table(resourceRecords.type,resourceRecords.name,resourceRecords.rrdata)'
@@ -511,7 +520,7 @@ delete_domain_mapping_if_exists() {
   fi
 
   say "Deleting domain mapping: ${TARGET_SERVICE_DNS_NAME}"
-  gcloud run domain-mappings delete "$TARGET_SERVICE_DNS_NAME" \
+  gcloud beta run domain-mappings delete "$TARGET_SERVICE_DNS_NAME" \
     --project="$GCLOUD_PROJECT_ID" \
     --region="$GCLOUD_REGION" \
     --quiet
@@ -868,7 +877,7 @@ run_chkdomain() {
     return 0
   fi
 
-  gcloud run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
+  gcloud beta run domain-mappings describe "$TARGET_SERVICE_DNS_NAME" \
     --project="$GCLOUD_PROJECT_ID" \
     --region="$GCLOUD_REGION" \
     --format='yaml(metadata.name,status.conditions,status.mappedRouteName)'
