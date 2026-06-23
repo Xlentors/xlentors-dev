@@ -54,33 +54,19 @@ steps:
           --allow-unauthenticated \
           --service-account "${_RUNTIME_SERVICE_ACCOUNT_EMAIL}"
 
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-    id: reconcile-cloud-run-ingress
-    entrypoint: bash
-    args:
-      - -lc
-      - |
-        set -euo pipefail
-        GCLOUD_PROJECT_ID="${_PROJECT_ID}" GCLOUD_REGION="${_REGION}" GCLOUD_SERVICE_NAME="${_GCLOUD_SERVICE_NAME}" WEBSITE_HOSTNAME="${_WEBSITE_HOSTNAME}" \
-          bash cicd/reconcile-service-ingress.sh --env "${_SERVICE_ENV}"
-
 substitutions:
   _ARTIFACT_REPO_APP: xlentors-dev-app
   _CLOUD_RUN_INGRESS: all
   _CPU: "1"
-  _GCLOUD_SERVICE_NAME: xlentors-dev
   _IMAGE_NAME: xlentors-dev
   _MAX_INSTANCES: "3"
   _MEMORY: 512Mi
   _MIN_INSTANCES: "0"
   _PORT: "8080"
-  _PROJECT_ID: xlentors-dev
   _REGION: us-central1
   _RUNTIME_SERVICE_ACCOUNT_EMAIL: xlentors-dev-deploy@xlentors-dev.iam.gserviceaccount.com
-  _SERVICE_ENV: prod
   _SERVICE_NAME: xlentors-dev
   _TIMEOUT: 60s
-  _WEBSITE_HOSTNAME: xlentors.dev
 
 timeout: 3600s
 
