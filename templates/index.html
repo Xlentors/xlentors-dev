@@ -31,15 +31,15 @@
     </div>
 
     <!-- ===== HERO : menu rail + title ===== -->
-    <div style="display:grid; grid-template-columns:240px 1fr; gap:64px; padding:96px 0 104px; align-items:center;">
+    <div id="home" style="display:grid; grid-template-columns:240px 1fr; gap:64px; padding:96px 0 104px; align-items:center;">
       <!-- menu rail -->
       <div style="display:flex; flex-direction:column; gap:2px;">
         <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8A8470; padding:0 14px 16px;">PORTFOLIO</div>
-        <div data-menu data-selected="1" style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; background:#454135; color:#CAC4AE;"><span>HOME</span><span>◂</span></div>
-        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>WORK</span><span style="opacity:0;">◂</span></div>
-        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>CAPABILITIES</span><span style="opacity:0;">◂</span></div>
-        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>ABOUT</span><span style="opacity:0;">◂</span></div>
-        <div data-menu style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>CONTACT</span><span style="opacity:0;">◂</span></div>
+        <div data-menu data-target="home" data-selected="1" style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; background:#454135; color:#CAC4AE;"><span>HOME</span><span>◂</span></div>
+        <div data-menu data-target="work" style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>WORK</span><span style="opacity:0;">◂</span></div>
+        <div data-menu data-target="capabilities" style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>CAPABILITIES</span><span style="opacity:0;">◂</span></div>
+        <div data-menu data-target="about" style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>ABOUT</span><span style="opacity:0;">◂</span></div>
+        <div data-menu data-target="contact" style="display:flex; align-items:center; justify-content:space-between; padding:11px 14px; font-family:'Marcellus SC',serif; font-size:15px; letter-spacing:0.12em; cursor:pointer; color:#454135;"><span>CONTACT</span><span style="opacity:0;">◂</span></div>
       </div>
 
       <!-- title -->
@@ -48,14 +48,14 @@
         <h1 style="font-family:'Marcellus SC',serif; font-weight:400; font-size:78px; line-height:1.0; letter-spacing:0.02em; margin:24px 0 0;">Systems<br>Developer</h1>
         <p style="font-size:16px; line-height:1.65; color:#5A5644; max-width:440px; margin:32px 0 0;">I'm Xlentors — an independent developer building the systems behind Roblox games and the web tools around them. Open for commissions.</p>
         <div style="display:flex; gap:24px; margin-top:36px; align-items:center; flex-wrap:wrap;">
-          <span data-cta style="font-family:'Marcellus SC',serif; font-size:13px; letter-spacing:0.12em; background:#454135; color:#CAC4AE; padding:13px 26px; cursor:pointer;">▸ VIEW WORK</span>
-          <span data-link style="font-family:'Marcellus SC',serif; font-size:13px; letter-spacing:0.12em; cursor:pointer; border-bottom:1px solid #454135; padding-bottom:3px;">Contact</span>
+          <span data-cta data-scroll="work" style="font-family:'Marcellus SC',serif; font-size:13px; letter-spacing:0.12em; background:#454135; color:#CAC4AE; padding:13px 26px; cursor:pointer;">▸ VIEW WORK</span>
+          <span data-link data-scroll="contact" style="font-family:'Marcellus SC',serif; font-size:13px; letter-spacing:0.12em; cursor:pointer; border-bottom:1px solid #454135; padding-bottom:3px;">Contact</span>
         </div>
       </div>
     </div>
 
     <!-- ===== SELECTED WORK ===== -->
-    <div style="display:flex; align-items:baseline; gap:16px; margin-top:88px;">
+    <div id="work" style="display:flex; align-items:baseline; gap:16px; margin-top:88px;">
       <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8C2E2E;">[ 002 ]</span>
       <span style="font-family:'Marcellus SC',serif; font-size:21px; letter-spacing:0.1em;">SELECTED WORK</span>
       <span style="flex:1; height:1px; background:#B4AE93;"></span>
@@ -93,7 +93,7 @@
     </div>
 
     <!-- ===== CAPABILITIES : open cells ===== -->
-    <div style="display:flex; align-items:baseline; gap:16px; margin-top:88px;">
+    <div id="capabilities" style="display:flex; align-items:baseline; gap:16px; margin-top:88px;">
       <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8C2E2E;">[ 003 ]</span>
       <span style="font-family:'Marcellus SC',serif; font-size:21px; letter-spacing:0.1em;">CAPABILITIES</span>
       <span style="flex:1; height:1px; background:#B4AE93;"></span>
@@ -114,8 +114,36 @@
       </div>
     </div>
 
+    <!-- ===== ABOUT ===== -->
+    <div id="about" style="display:flex; align-items:baseline; gap:16px; margin-top:88px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8C2E2E;">[ 004 ]</span>
+      <span style="font-family:'Marcellus SC',serif; font-size:21px; letter-spacing:0.1em;">ABOUT</span>
+      <span style="flex:1; height:1px; background:#B4AE93;"></span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; margin-top:40px; padding-bottom:16px;">
+      <div>
+        <p style="font-size:15px; line-height:1.75; color:#5A5644; margin:0;">I'm Xlentors — an independent developer focused on Roblox Luau systems and the web infrastructure around games. I work across the full stack: from low-level gameplay scripting to Cloud-deployed backends and dashboards.</p>
+        <p style="font-size:15px; line-height:1.75; color:#5A5644; margin:24px 0 0;">I take on commissions and collaborations for projects that need reliable, well-architected systems — not quick-and-dirty scripts.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="border-top:1px solid #B4AE93; padding-top:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:#8C2E2E; margin-bottom:6px;">FOCUS</div>
+          <div style="font-size:14px; color:#454135;">Roblox systems · Web / SaaS · Cloud infrastructure</div>
+        </div>
+        <div style="border-top:1px solid #B4AE93; padding-top:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:#8C2E2E; margin-bottom:6px;">STACK</div>
+          <div style="font-size:14px; color:#454135;">Luau · Python · Flask · Google Cloud · Docker</div>
+        </div>
+        <div style="border-top:1px solid #B4AE93; padding-top:16px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:#8C2E2E; margin-bottom:6px;">STATUS</div>
+          <div style="font-size:14px; color:#454135; display:flex; align-items:center; gap:8px;"><span style="width:6px; height:6px; background:#5C7A3E; display:inline-block;"></span>Available for commissions</div>
+        </div>
+      </div>
+    </div>
+
     <!-- ===== CONTACT : single bracket frame ===== -->
-    <div style="position:relative; border:1px solid #6F6B57; margin:96px 0 48px; padding:72px 52px; text-align:center;">
+    <div id="contact" style="position:relative; border:1px solid #6F6B57; margin:96px 0 48px; padding:72px 52px; text-align:center;">
       <span style="position:absolute; top:-1px; left:-1px; width:14px; height:14px; border-top:1.5px solid #454135; border-left:1.5px solid #454135;"></span>
       <span style="position:absolute; top:-1px; right:-1px; width:14px; height:14px; border-top:1.5px solid #454135; border-right:1.5px solid #454135;"></span>
       <span style="position:absolute; bottom:-1px; left:-1px; width:14px; height:14px; border-bottom:1.5px solid #454135; border-left:1.5px solid #454135;"></span>
